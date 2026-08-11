@@ -1,0 +1,46 @@
+# AutoDL
+.autodl/
+
+# Dataset
+DATASET/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# nnUNet generated data
+nnUNet_raw/
+nnUNet_preprocessed/
+nnUNet_results/
+
+# Model weights
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.safetensors
+
+# Logs
+*.log
+logs/
+
+# Results
+outputs/
+results/
+runs/
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+.env

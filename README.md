@@ -1,13 +1,13 @@
-# Knee OA Structure Segmentation (Dataset002_OurOA)
+# Knee OA Structure Segmentation — Pre-trained Weights (Dataset002_OurOA)
 
-Automatic segmentation of knee osteoarthritis-related structures from MRI using
-[nnU-Net v2](https://github.com/MIC-DKFZ/nnUNet).
+Pre-trained **5-fold nnU-Net v2** weights for automatic segmentation of knee
+osteoarthritis-related structures from MRI.
 
-This repository releases a **trained 5-fold ensemble** and a **subset of 50
-training cases** of our internal knee OA dataset. All imaging data has been
-anonymized.
+> ⚠️ **Data notice:** The training data is **not public**. This branch releases
+> only the trained **model weights** for inference. Please contact the authors
+> for data access.
 
-## Highlights
+## Model Details
 
 - **Modalities (2 channels per case):**
   - `0000`: PDW
@@ -31,11 +31,6 @@ anonymized.
 ```
 .
 ├── README.md
-├── nnUNet_raw/                              # nnUNet_raw data root (env: nnUNet_raw)
-│   └── Dataset002_OurOA/
-│       ├── dataset.json
-│       ├── imagesTr/                        # 50 training cases (PDW + T2W)
-│       └── labelsTr/                        # 50 corresponding label maps
 └── nnUNet_results/                          # nnUNet_results data root (env: nnUNet_results)
     └── Dataset002_OurOA/
         └── nnUNetTrainer__nnUNetPlans__3d_fullres/
@@ -54,11 +49,9 @@ pip install nnunetv2        # nnU-Net v2 (see the official repo for details)
 git lfs pull                # fetch the LFS weight files
 ```
 
-Set the nnU-Net environment variables (adjust paths to your checkout):
+Set the nnU-Net environment variable (adjust paths to your checkout):
 
 ```bash
-export nnUNet_raw=/path/to/this/repo/nnUNet_raw
-export nnUNet_preprocessed=/path/to/your/preprocessed   # only needed for training
 export nnUNet_results=/path/to/this/repo/nnUNet_results
 ```
 
@@ -77,18 +70,8 @@ nnUNetv2_predict \
 
 By default nnU-Net ensembles all 5 folds for more robust predictions.
 
-## (Optional) Retrain on the released subset
-
-```bash
-nnUNetv2_plan_and_preprocess -d 002 --verify_dataset_integrity
-
-for fold in 0 1 2 3 4; do
-  nnUNetv2_train 002 3d_fullres $fold
-done
-```
-
 ## License & Usage
 
-The released data and weights are provided for **research purposes only**.
-Please cite this project if you use them in your work, and contact the authors
-for questions about clinical or commercial use.
+The released weights are provided for **research purposes only**. Please cite
+this project if you use them, and contact the authors for data access or
+questions about clinical/commercial use.
